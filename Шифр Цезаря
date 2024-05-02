@@ -1,0 +1,29 @@
+sp = input().split()
+
+ang_alf1 = [x for x in range(ord('a'), ord('z') + 1)]
+ang_alf2 = [x for x in range(ord('A'), ord('Z') + 1)]
+
+otvet = []
+for i in sp:
+    counter = 0
+    prom = []
+    for j in i:
+        if j.isalpha() == True:
+            counter += 1
+        prom += j
+    for g in prom:
+        if g.isalpha() == True:
+            if g in "abcdefghijklmnopqrstuvwxyz":
+                if ord(g) + counter > ord('z'):
+                    otvet.append(chr(ang_alf1[ang_alf1.index(ord(g)) + counter - 26]))
+                else: otvet.append(chr(ang_alf1[ang_alf1.index(ord(g)) + counter]))
+    
+            else:
+                if ord(g) + counter > ord('Z'):
+                    otvet.append(chr(ang_alf2[ang_alf2.index(ord(g)) + counter - 26]))
+                else: otvet.append(chr(ang_alf2[ang_alf2.index(ord(g)) + counter]))
+            
+        else: otvet.append(g)
+    otvet.append(' ')
+                
+print(*otvet[:-1], sep = "")
