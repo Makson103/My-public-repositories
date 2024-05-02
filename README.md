@@ -1,2 +1,2 @@
 # My-public-repositories
-Anyone can cheeck it
+Anyone can check it
