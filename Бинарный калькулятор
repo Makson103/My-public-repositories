@@ -1,0 +1,62 @@
+#бинaрный калькулятор
+print("Введите первое число")
+digit1 = list(input())
+digit1 = digit1[::-1] #Переворачиваем число в списке
+print('Введите второе число')
+digit2 = list(input())
+digit2 = digit2[::-1] #Переворачиваем число в списке
+
+diffrent = max(len(digit1), len(digit2)) - min(len(digit1), len(digit2))  #нашли количество цифр
+
+if digit1 < digit2:
+    while len(digit1) != len(digit2):   #добавляем нули
+        digit1.append('0')
+else:
+    while len(digit2) != len(digit1):   #добавляем нули
+        digit2.append('0')
+
+
+bul = False
+new_sp = []
+
+def sum(digit1,digit2):
+
+    global bul
+    global new_sp
+    global i
+    
+    if digit1[i] in '1':
+        odin = True
+    else: odin = False
+        #узнали число первого списка
+    if digit2[i] in '1':
+        dva = True
+    else: dva = False
+        #узнали число второго списка
+
+    if odin == True and dva == True and bul == True:
+        new_sp.append(1)
+        bul = True
+        return bul
+    elif odin == False and dva == False and bul == False:
+        new_sp.append(0)
+        bul = False
+        return bul
+
+    elif (odin == True and dva == True and bul == False) or (odin == True and dva == False and bul == True) or (odin == False and dva == True and bul == True):
+        new_sp.append(0)
+        bul = True
+        return bul
+
+    elif (odin == False and dva == False and bul == True) or (odin == False and dva == True and bul == False) or (odin == True and dva == False and bul == False):
+        new_sp.append(1)
+        bul = False
+        return bul
+
+
+for i in range(len(digit1)):
+    sum(digit1,digit2)
+
+if bul == True:
+    new_sp.append(1)
+print(*new_sp[::-1], sep = '')

@@ -1,0 +1,35 @@
+from random import choice
+
+password = ''
+digit = "0123456789"
+en_lower = "abcdefghijklmnopqrstuvwxyz"
+en_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+simbol = "!#$%&*+-=?@^_"
+print('Добро пожаловать в генератор безопасных поролей')
+while 1 > 0:
+    avalibol = []
+    print('Введите длинну пороля:', end = " "); lenn = int(input())
+    print("Использовать символы нижнего регистра? Да или нет:", end = " "); enlow = input().lower()
+    print("Использовать символы верхнего регистра? Да или нет:", end = " "); enup = input().lower()
+    print("Использовать цифры? Да или нет:", end = " "); dig = input().lower()
+    print("Использовать дополнительные символы? Да или нет:", end = " "); simb = input().lower()
+
+    if enlow in "да":
+        avalibol += list(en_lower)
+
+    if enup in "да":
+        avalibol += list(en_upper)
+
+    if simb in "да":
+        avalibol += list(simbol)
+
+    if dig in "да":
+        avalibol += list(digit)
+
+    for i in range(lenn):
+        password += str(choice(avalibol))
+        
+    print(password)
+    print('Хотите сгенерировать еще один пороль? Да или нет:', end = " "); choise = input().lower()
+
+    if choise != 'да': break
